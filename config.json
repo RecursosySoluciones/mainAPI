@@ -1,0 +1,60 @@
+{
+    "base_url": "127.0.0.1:8080/",
+    "mainInfo": {
+        "port": 8080,
+        "routes": "/api/v1",
+        "jwtPass": "6EF28DF7C26525C45247E64E17CCC"
+    },
+    "productionDB": {
+        "mysql":{
+            "host": "localhost",
+            "user": "mainUser",
+            "password": "24032011Rm",
+            "database": "apiTelecom",
+            "port": 3306
+        },
+        "mongodb": {
+            "host": "mongodb://localhost",
+            "user": "",
+            "password": "",
+            "database": "apiTelecom",
+            "port": 27017
+        }
+    },
+    "developmentDB": {
+        "mysql":{
+            "host": "localhost",
+            "user": "root",
+            "password": "",
+            "database": "apiTelecom",
+            "port": 3306
+        },
+        "mongodb": {
+            "host": "localhost",
+            "user": "root",
+            "password": "24032011Rm",
+            "database": "apiTelecom",
+            "port": 27017
+        }
+    },
+    "projectInformation": {
+        "author": [
+            "Cesar Soler",
+            "Maximiliano Leonel Cóppola",
+            "Javier Sosa",
+            "Alfredo Gelberg Izrastzoff",
+            "Matias Sartori",
+            "Gabriel Navarro",        
+            "Ramiro Macciuci"
+        ],
+        "company": "Telecom Argentina S.A."
+    },
+    "routesPermissions": {
+        "/users": {
+            "GET": 1,
+            "POST": 1,
+            "PUT": 1,
+            "DELETE": 1
+        }
+    }
+}

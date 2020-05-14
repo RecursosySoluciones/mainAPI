@@ -3,6 +3,8 @@ const bodyParser    = require('body-parser');
 const migrations    = require('./database/migrations/migrations');
 const dotenv        = require('dotenv').config();
 const fileUpload    = require('express-fileupload');
+const helper        = require('./controllers/helper');
+const views         = require('./views');
 
 const app = express();
 app.set('view engine','pug');
@@ -11,6 +13,15 @@ app.set('view engine','pug');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.use(function(req,res,next) {
+    let auth = req.headers.authorization;
+    if(!auth) return views.error.code(res,'ERR_03');
+    auth = auth.split(' ');
+    if(auth[0] != 'Bearer') return views.error.code(res,'ERR_03');
+    if(helper.configFile().mainInfo.staticPass != auth[1]) return views.error.code(res,'ERR_03');
+    next();
+})
 
 app.use(fileUpload());
 

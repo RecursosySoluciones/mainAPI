@@ -3,7 +3,8 @@
     "mainInfo": {
         "port": 10021,
         "routes": "/api/v1",
-        "jwtPass": "6EF28DF7C26525C45247E64E17CCC"
+        "jwtPass": "6EF28DF7C26525C45247E64E17CCC",
+        "staticPass": "7398127BNKSDNKJCN92NCKWJSNSCDCSDCSELZ32873432"
     },
     "productionDB": {
         "mysql":{

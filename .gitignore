@@ -4,3 +4,4 @@ package-lock.json
 /public/images/*.jpeg
 /public/images/*.png
 ~$*.xlsx
+.env

@@ -15,8 +15,8 @@
         },
         "mongodb": {
             "host": "mongodb://localhost",
-            "user": "",
-            "password": "",
+            "user": "apiprincipal",
+            "password": "Recursos2020!",
             "database": "apitelecom",
             "port": 27017
         }

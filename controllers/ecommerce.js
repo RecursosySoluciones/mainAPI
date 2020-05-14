@@ -50,6 +50,7 @@ const controller = {
         // Guardamos el archivo
         let archivo = new FilesModel(req);
         archivo = await archivo.save();
+        await ecommerceSchema.remove({});
         let data = await csvtojson({}).fromFile(archivo.url);
         let tempData;
         for(let x = 0; x < data.length; x++){
@@ -71,12 +72,15 @@ const controller = {
             }
             let c = new ecommerceSchema(tempData);
             c.save().then(v => {
-                if(x + 1 == data.length) return views.success.create(res);
+                if(x + 1 == data.length) {
+                    helper.files.deleteUploaded(archivo.id).then(v => {
+                        return views.success.create(res);
+                    })
+                } 
             },(e => {
                 console.log(e)
             }))
         }
-        await helper.files.deleteUploaded(archivo.id);
     },
     checkExcelError: (valor, expectedValue = true) => {
         if(valor != undefined && typeof(valor) == 'string'){

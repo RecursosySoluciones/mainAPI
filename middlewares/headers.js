@@ -1,7 +1,9 @@
 let headers = (req, res, next) => {
     global.completeUrl = req.protocol + '://' + req.get('host');
     // Headers de respuesta 
-    if(process.env.ENVRIORMENT == 'development'){
+   // if(process.env.ENVRIORMENT == 'development'){
+    if(true){
+
         // Website you wish to allow to connect
         res.setHeader('Access-Control-Allow-Origin', '*');
         // Request methods you wish to allow

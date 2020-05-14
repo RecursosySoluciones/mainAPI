@@ -50,7 +50,7 @@ const controller = {
         // Guardamos el archivo
         let archivo = new FilesModel(req);
         archivo = await archivo.save();
-        await ecommerceSchema.remove({});
+        await ecommerceSchema.deleteMany({});
         let data = await csvtojson({}).fromFile(archivo.url);
         let tempData;
         for(let x = 0; x < data.length; x++){

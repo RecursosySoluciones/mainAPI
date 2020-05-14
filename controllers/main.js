@@ -1,8 +1,5 @@
 const helper        = require('./helper');
 const views         = require('../views');
-const Users         = require('../models/users');
-const password_hash = require('password-hash');
-const Auth          = require('../middlewares/authentication');
 
 var controller = {
     principalView: (req, res) => {
@@ -27,18 +24,7 @@ var controller = {
         }else{
             helper.return.success.file(res,'public/notFound.jpg');
         }
-    },
-    login: async (req, res) => {
-        const {email, password} = req.body;
-        if(email == undefined || password == undefined) return views.error.code(res,'ERR_01');
-        let consulta = await Auth.checkUser(email,password);
-        if(!consulta) return views.error.code(res,'ERR_02');
-        // Asignamos Token
-        let token = new Auth(consulta[0]);
-        token = await token.generarToken();
-        if(!token) return views.error.code(res,'ERR_03');
-        else return views.customResponse(res,true,202,"",{},helper.users.loggedUser(consulta[0],token))
-    }   
+    } 
 }
 
 module.exports = controller;

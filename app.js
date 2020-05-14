@@ -3,7 +3,6 @@ const bodyParser    = require('body-parser');
 const migrations    = require('./database/migrations/migrations');
 const dotenv        = require('dotenv').config();
 const fileUpload    = require('express-fileupload');
-const Auth          = require('./middlewares/authentication');
 
 const app = express();
 app.set('view engine','pug');
@@ -28,7 +27,6 @@ app.use(fileUpload());
     }
 
  */
-app.use(Auth.checkToken);
 app.use(bodyParser.json());
 
 migrations();

@@ -6,7 +6,6 @@ const app = express();
 
 
 app.use('/', require('./main'));
-app.use(`${routesPath}/users`,require('./users'));
-app.use(`${routesPath}/files`,require('./files'));
+app.use(`${routesPath}/ecommerce`, require('./ecommerce'));
 
 module.exports = app;

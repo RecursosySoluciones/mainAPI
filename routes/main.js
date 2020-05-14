@@ -9,7 +9,5 @@ const router        = express.Router();
 router.get(`/`,main.principalView);
 router.get(`${routesPath}/test`,main.test);
 router.get(`${routesPath}/frontUtilities`, main.frontUtilities);
-router.get(`/public/:section?/:type?/:file?`,main.getPublicFile);
-router.post(`${routesPath}/login`, main.login);
 
 module.exports = router;

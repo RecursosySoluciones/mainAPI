@@ -1,15 +1,15 @@
 {
-    "base_url": "127.0.0.1:8080/",
+    "base_url": "127.0.0.1:10021/",
     "mainInfo": {
-        "port": 8080,
+        "port": 10021,
         "routes": "/api/v1",
         "jwtPass": "6EF28DF7C26525C45247E64E17CCC"
     },
     "productionDB": {
         "mysql":{
             "host": "localhost",
-            "user": "mainUser",
-            "password": "24032011Rm",
+            "user": "",
+            "password": "",
             "database": "apiTelecom",
             "port": 3306
         },
@@ -17,7 +17,7 @@
             "host": "mongodb://localhost",
             "user": "",
             "password": "",
-            "database": "apiTelecom",
+            "database": "apitelecom",
             "port": 27017
         }
     },
@@ -32,8 +32,8 @@
         "mongodb": {
             "host": "localhost",
             "user": "root",
-            "password": "24032011Rm",
-            "database": "apiTelecom",
+            "password": "root",
+            "database": "apitelecom",
             "port": 27017
         }
     },
@@ -48,13 +48,5 @@
             "Ramiro Macciuci"
         ],
         "company": "Telecom Argentina S.A."
-    },
-    "routesPermissions": {
-        "/users": {
-            "GET": 1,
-            "POST": 1,
-            "PUT": 1,
-            "DELETE": 1
-        }
     }
 }

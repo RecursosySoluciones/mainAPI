@@ -80,7 +80,7 @@ var controller = {
             // Este metodo elimina el registro en la base de datos y en los archivos
             return new Promise((res, rej) => {
                 files.findById(id).then((v) => {
-                    controller.files.delete(v.url);
+                    controller.files.delete('../files/' + v.url);
                     files.deleteOne({_id: id}).then((r) => {
                         if(r.deletedCount > 0) res(true);
                         else res(false)

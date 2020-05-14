@@ -5,22 +5,12 @@ const Schema    = mongoose.Schema;
 
 
 // Users tables
-const usersTable = require('./usersTable');
 const Files = require('./Files');
-
-// ArticlesTable
-const articlesTable                 = require('./articlesTable');
-const articlesCategoriesTable       = require('./articlesCategoriesTable');
-const articlesSubcategoriesTable    = require('./articlesSubcategoriesTable');
-const articlesFiles                 = require('./articlesFiles');
+const Ecommerce = require('./ecommerce');
 
 var migrations = function() {
-    usersTable();
-    Files();
-    articlesTable();
-    articlesCategoriesTable();    
-    articlesSubcategoriesTable(); 
-    articlesFiles();              
+    Files();       
+    Ecommerce();    
 }
 
 module.exports = migrations;

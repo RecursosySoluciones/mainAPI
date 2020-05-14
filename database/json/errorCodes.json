@@ -1,33 +1,33 @@
 {
   "ERR_01": {
     "HTTP_CODE": 400,
-    "TEXTO": "Error al logear usuario. Faltan parametros",
-    "MENSAJE": "ERR_01 - Error al logear usuario. Faltan parametros"
+    "TEXTO": "Error al enviar parametros",
+    "MENSAJE": "ERR_01 - Error al enviar parametros"
   },
   "ERR_02": {
     "HTTP_CODE": 401,
-    "TEXTO": "Error de autenticacion",
-    "MENSAJE": "ERR_02 - Error de autenticacion"
+    "TEXTO": "Tipo de archivo erroneo. Solo puede ser text/csv",
+    "MENSAJE": "ERR_02 - Tipo de archivo erroneo. Solo puede ser text/csv"
   },
   "ERR_03": {
-    "HTTP_CODE": 401,
-    "TEXTO": "Error al generar token",
-    "MENSAJE": "ERR_03 - Error al generar token"
+    "HTTP_CODE": 403,
+    "TEXTO": "Acceso denegado",
+    "MENSAJE": "ERR_03 - Acceso denegado"
   },
   "ERR_04": {
     "HTTP_CODE": 401,
-    "TEXTO": "No autorizado",
-    "MENSAJE": "ERR_04 - No autorizado"
+    "TEXTO": "",
+    "MENSAJE": "ERR_04 -"
   },
   "ERR_05": {
     "HTTP_CODE": 401,
-    "TEXTO": "Token vencido o invalido",
-    "MENSAJE": "ERR_05 - Token vencido o invalido"
+    "TEXTO": "",
+    "MENSAJE": "ERR_05 -"
   },
   "ERR_06": {
     "HTTP_CODE": 403,
-    "TEXTO": "Error de permisos de usuario. No permitido",
-    "MENSAJE": "ERR_06 - Error de permisos de usuario. No permitido"
+    "TEXTO": "",
+    "MENSAJE": "ERR_06 -"
   },
   "ERR_07": {
     "HTTP_CODE": 400,

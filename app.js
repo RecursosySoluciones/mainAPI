@@ -6,8 +6,8 @@ const dotenv        = require('dotenv').config();
 const fileUpload    = require('express-fileupload');
 const helper        = require('./controllers/helper');
 const views         = require('./views');
-const cors		= require('cors')
-const app = express();
+const cors		    = require('cors')
+const app           = express();
 app.set('view engine','pug');
 
 app.use(bodyParser.json());

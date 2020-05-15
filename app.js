@@ -17,14 +17,14 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(function(req,res,next) {
-    let auth = req.headers.authorization;
-    if(!auth) return views.error.code(res,'ERR_03');
-    auth = auth.split(' ');
-    if(auth[0] != 'Bearer') return views.error.code(res,'ERR_03');
-    if(helper.configFile().mainInfo.staticPass != auth[1]) return views.error.code(res,'ERR_03');
-    next();
-})
+// app.use(function(req,res,next) {
+//     let auth = req.headers.authorization;
+//     if(!auth) return views.error.code(res,'ERR_03');
+//     auth = auth.split(' ');
+//     if(auth[0] != 'Bearer') return views.error.code(res,'ERR_03');
+//     if(helper.configFile().mainInfo.staticPass != auth[1]) return views.error.code(res,'ERR_03');
+//     next();
+// })
 
 app.use(fileUpload());
 

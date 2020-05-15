@@ -9,7 +9,9 @@ const views         = require('./views');
 const app = express();
 app.set('view engine','pug');
 
+app.use(bodyParser.json());
 app.use(require('./middlewares/headers'));
+app.use(fileUpload());
 
 
 // Start Middlewares
@@ -26,7 +28,6 @@ app.use(function(req,res,next) {
     next();
 })
 
-app.use(fileUpload());
 
 /**
  * Auth.checkToken -> validara el token y permisos de usuario para las rutas registradas en config.json,
@@ -41,7 +42,6 @@ app.use(fileUpload());
     }
 
  */
-app.use(bodyParser.json());
 
 migrations();
 

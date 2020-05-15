@@ -9,6 +9,9 @@ const views         = require('./views');
 const app = express();
 app.set('view engine','pug');
 
+app.use(require('./middlewares/headers'));
+
+
 // Start Middlewares
 app.use(bodyParser.urlencoded({
     extended: true
@@ -42,7 +45,6 @@ app.use(bodyParser.json());
 
 migrations();
 
-app.use(require('./middlewares/headers'));
 // End Middlewares
 
 // Routes

@@ -6,7 +6,7 @@ const cfile     = helper.configFile();
 const dbConfig  = db.getData();
 mongoose.Promise= global.Promise;
 
-mongoose.connect(`mongodb://${dbConfig.mongodb.user}:${dbConfig.mongodb.password}@${dbConfig.mongodb.host}:${dbConfig.mongodb.port}/${dbConfig.mongodb.database}`,{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true }).then(() => {
+mongoose.connect(`mongodb://${dbConfig.mongodb.host}:${dbConfig.mongodb.port}/${dbConfig.mongodb.database}`,{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true }).then(() => {
     console.log("-------------------------------------------------- ");
     console.log("DATABASES CONNECTIONS");
     console.log("");

@@ -28,6 +28,9 @@ var controller = {
                     return controller.error(res, `Codigo de error invalido: ${codeId}`);
                 }
             }
+        },
+        message: (res, msg) => {
+            return controller.customResponse(res, false, 400, msg);
         }
     },
     success: {

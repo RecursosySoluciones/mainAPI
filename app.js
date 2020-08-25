@@ -8,6 +8,9 @@ const helper        = require('./controllers/helper');
 const views         = require('./views');
 const cors		    = require('cors')
 const app           = express();
+
+global.baseUrl      = require('path').resolve(); // almacenamos la ruta absoluta
+
 app.set('view engine','pug');
 
 app.use(bodyParser.json());

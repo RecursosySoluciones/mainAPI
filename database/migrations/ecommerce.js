@@ -3,39 +3,31 @@ const Schema   = mongoose.Schema;
 
 var Ecommerce = new Schema({
     orderId: {
-        type: String,
-        required: true
+        type: String
     },
     fechaPedido: {
-        type: String,
-        required: true
+        type: String
     },
     clientName: {
-        type: String,
-        required: true
+        type: String
     },
     clientLastName: {
-        type: String,
-        required: true
+        type: String
     },
     clientDocument: {
-        type: Number,
-        required: true
+        type: Number
     },
     SKUName: {
-        type: String,
-        required: true
+        type: String
     },
     SKUValue: {
-        type: Number,
-        required: true
+        type: Number
     },
     lineaLogeada: {
         type: Number
     },
     statusClick: {
-        type: String,
-        required: true
+        type: String
     },
     motivoClick: {
         type: String

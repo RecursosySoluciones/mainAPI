@@ -1,9 +1,89 @@
 const ecommerceSchema = require('../database/migrations/ecommerce');
+const { XLSXFile } = require('./XLSXFiles');
 
+module.exports = {
+    file: null,
+    dataTobase: [],
+    async save (file) {
+        this.file = file;
+        await this.getData();
 
+        await ecommerceSchema.deleteMany({});
+        
+        await ecommerceSchema.insertMany(this.dataTobase);
 
-class Ecommerce {
+        return true;
+    },
+    async getData () {
+        let data = await XLSXFile.getData(this.file);
 
+        const requiredHeaders = [
+            "Order",
+            "Fecha pedido",
+            "Client Name",
+            "Client Last Name",
+            "Client Document",
+            "SKU Name",
+            "SKU Value",
+            "Linea logueada",
+            "Estado (click)",
+            "Motivo (click)",
+            "Observaciones (click)",
+            "Pedidodel (click)",
+            "Tipo mail",
+            "Fecha mail"
+        ]
+
+        for(let d of data) {
+            let cnt = false;
+            if(d.name == 'Mails' || d.name == 'Glosario' || d.name == 'Sucursales CORREO') continue;
+
+            for(let h of d.data.headers) {
+                if(!requiredHeaders.includes(h)) {
+                    cnt = true;
+                    break;
+                }
+            }
+            if(cnt) continue;
+
+            for(let row of d.data.rows) {
+                this.dataTobase.push(new ecommerceSchema({
+                    orderId:            row.Order,
+                    fechaPedido:        row['Fecha pedido'],
+                    clientName:         row['Client Name'],
+                    clientLastName:     row['Client Last Name'],
+                    clientDocument:     row['Client Document'],
+                    SKUName:            row['SKU Name'],
+                    SKUValue:           row['SKU Value'],
+                    lineaLogeada:       row['Linea logeada'],
+                    statusClick:        row['Estado (click)'],
+                    motivoClick:        row['Motivo (click)'],
+                    observacionesClick: row['Observaciones (click)'],
+                    pedidoDelClick:     row['Pedidodel (click)'],
+                    tipoMail:           row['Tipo mail'],
+                    fechaMail:          row['Fecha mail']
+                }))
+
+            }
+        }
+    },
+    checkExcelError (valor, expectedValue = true) {
+        if(valor != undefined && typeof(valor) == 'string'){
+            if(valor.indexOf('#') == -1){
+                if(expectedValue){
+                    return valor
+                }else{
+                    if(!isNaN(parseFloat(valor))){
+                        return parseFloat(valor)
+                    }else{
+                        return 0;
+                    }
+                }
+            }else{ 
+                return expectedValue ? '' : 0;
+            }
+        }else{
+            return expectedValue ? '' : 0;
+        }
+    }
 }
-
-module.exports = Ecommerce;

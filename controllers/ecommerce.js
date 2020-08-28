@@ -10,7 +10,7 @@ const controller = {
     async get (req, res) {
         let dataReturn = [],tempData;
 
-        let { OrderId, clientDNI, limit } = req.query;
+        let { OrderId, clientDNI, limit, lineaLogeada } = req.query;
 
         let wh = {};
 
@@ -18,9 +18,23 @@ const controller = {
             wh['orderId'] = new RegExp(OrderId);
         }
 
-        if(clientDNI) {
-            wh['clientDocument'] = clientDNI
+        if(lineaLogeada && !clientDNI) {
+            wh = {
+                lineaLogeada
+            }
+        } else if(lineaLogeada && clientDNI) {
+            wh = {
+                $or: [
+                    {lineaLogeada: lineaLogeada},
+                    {clientDocument: clientDNI}
+                ]
+            }
+        } else if(!lineaLogeada && clientDNI) {
+            wh = {
+                clientDocument: clientDNI
+            }
         }
+
         
         limit = limit ? parseInt(limit) : 10;
         let c = await ecommerceSchema.find().where(wh).limit(limit);
@@ -29,7 +43,7 @@ const controller = {
                 id: c[x]._id,
                 orderId: c[x].orderId,
                 fechaPedido: c[x].fechaPedido,
-                cliente: {
+                cliente: {  
                     name: c[x].clientName,
                     lastName: c[x].clientLastName,
                     document: c[x].clientDocument,

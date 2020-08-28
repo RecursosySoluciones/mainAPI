@@ -10,7 +10,7 @@ const controller = {
     async get (req, res) {
         let dataReturn = [],tempData;
 
-        let { OrderId, clientDNI, limit, lineaLogeada } = req.query;
+        let { OrderId, clientDNI, limit, lineaLogueada } = req.query;
 
         let wh = {};
 
@@ -18,18 +18,18 @@ const controller = {
             wh['orderId'] = new RegExp(OrderId);
         }
 
-        if(lineaLogeada && !clientDNI) {
+        if(lineaLogueada && !clientDNI) {
             wh = {
-                lineaLogeada
+                lineaLogueada
             }
-        } else if(lineaLogeada && clientDNI) {
+        } else if(lineaLogueada && clientDNI) {
             wh = {
                 $or: [
-                    {lineaLogeada: lineaLogeada},
+                    { lineaLogueada },
                     {clientDocument: clientDNI}
                 ]
             }
-        } else if(!lineaLogeada && clientDNI) {
+        } else if(!lineaLogueada && clientDNI) {
             wh = {
                 clientDocument: clientDNI
             }
@@ -47,7 +47,7 @@ const controller = {
                     name: c[x].clientName,
                     lastName: c[x].clientLastName,
                     document: c[x].clientDocument,
-                    linea: c[x].lineaLogeada
+                    linea: c[x].lineaLogueada
                 },
                 compra: {
                     SKU: c[x].SKUName,

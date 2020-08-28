@@ -15,7 +15,7 @@ var Ecommerce = new Schema({
         type: String
     },
     clientDocument: {
-        type: Number
+        type: String
     },
     SKUName: {
         type: String
@@ -23,8 +23,8 @@ var Ecommerce = new Schema({
     SKUValue: {
         type: Number
     },
-    lineaLogeada: {
-        type: Number
+    lineaLogueada: {
+        type: String
     },
     statusClick: {
         type: String

@@ -8,9 +8,12 @@ module.exports = {
         this.file = file;
         await this.getData();
 
+        console.log("Antes de eliminar")
         await ecommerceSchema.deleteMany({});
         
-        await ecommerceSchema.insertMany(this.dataTobase);
+        console.log("Antes de guardar")
+        let c = await ecommerceSchema.insertMany(this.dataTobase);
+        console.log(c, "Despues de guardar")
 
         return true;
     },
@@ -55,7 +58,7 @@ module.exports = {
                     clientDocument:     row['Client Document'],
                     SKUName:            row['SKU Name'],
                     SKUValue:           row['SKU Value'],
-                    lineaLogeada:       row['Linea logeada'],
+                    lineaLogueada:       row['Linea logueada'],
                     statusClick:        row['Estado (click)'],
                     motivoClick:        row['Motivo (click)'],
                     observacionesClick: row['Observaciones (click)'],

@@ -41,13 +41,10 @@ module.exports = {
             let cnt = false;
             if(d.name == 'Mails' || d.name == 'Glosario' || d.name == 'Sucursales CORREO') continue;
 
-            for(let h of d.data.headers) {
-                if(!requiredHeaders.includes(h)) {
-                    cnt = true;
-                    break;
-                }
+            // Chequeamos las columnas requeridas
+            for(let h of requiredHeaders) {
+                if(!d.data.headers.includes(h)) throw new Error("Error en las columnas requeridas");
             }
-            if(cnt) continue;
 
             for(let row of d.data.rows) {
                 this.dataTobase.push(new ecommerceSchema({

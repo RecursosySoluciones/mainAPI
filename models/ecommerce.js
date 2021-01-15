@@ -47,7 +47,7 @@ module.exports = {
             }
 
             for(let row of d.data.rows) {
-                this.dataTobase.push(new ecommerceSchema({
+                let d = new ecommerceSchema({
                     orderId:            row.Order,
                     fechaPedido:        row['Fecha pedido'],
                     clientName:         row['Client Name'],
@@ -62,8 +62,11 @@ module.exports = {
                     pedidoDelClick:     row['Pedidodel (click)'],
                     tipoMail:           row['Tipo mail'],
                     fechaMail:          row['Fecha mail']
-                }))
-
+                })
+                
+                if(!this.dataTobase.find(e => e.orderId == d.orderId)) {
+                    this.dataTobase.push(d);
+                }
             }
         }
     },
